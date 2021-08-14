@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 
+import Recipe from "./component/Recipe";
+
 const App = (props) => {
     const APP_ID = '50c847f9';
     const APP_KEY = '745c65a2aa67a5245b282c4d893b7772';
 
-    const [recipe, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState([]);
 
     // useEffect(async () => {
     //     getRecipe()
@@ -29,6 +31,14 @@ const App = (props) => {
                   SUMBIT
               </button>
           </form>
+
+          {recipes.map(el => (
+              <Recipe
+                  title={el.recipe.label}
+                  calories={el.recipe.calories}
+                  image={el.recipe.image}
+              />
+          ))}
       </div>
   )
 }
