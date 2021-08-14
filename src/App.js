@@ -27,33 +27,37 @@ const App = (props) => {
         e.preventDefault();
 
         setQuery(search);
+        setSearch('')
     }
 
 
     return (
-      <div className='App'>
-          <form className='search-form' onSubmit={onsubmit}>
-              <input
-                  value={search}
-                  onChange={updateSearch}
-                  className='search-bar'
-                  type="text"/>
-              <button
-                  className='search-button'
-                  type='submit'>
-                  SUMBIT
-              </button>
-          </form>
-
-          {recipes.map(el => (
-              <Recipe key={el.recipe.label}
-                  title={el.recipe.label}
-                  calories={el.recipe.calories}
-                  image={el.recipe.image}
-              />
-          ))}
-      </div>
-  )
+        <div className='App'>
+            <form className='search-form' onSubmit={onsubmit}>
+                <input
+                    value={search}
+                    onChange={updateSearch}
+                    placeholder='Search ur recipe'
+                    className='search-bar'
+                    type="text"/>
+                <button
+                    className='search-button'
+                    type='submit'>
+                    SUMBIT
+                </button>
+            </form>
+            <div className="wrapper">
+                {recipes.map(el => (
+                    <Recipe key={el.recipe.label}
+                            title={el.recipe.label}
+                            calories={el.recipe.calories}
+                            image={el.recipe.image}
+                            ingredients={el.recipe.ingredients}
+                    />
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default App;
